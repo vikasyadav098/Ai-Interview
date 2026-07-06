@@ -6,8 +6,41 @@ const Report = () => {
 
   const result = location?.state?.result
   const interviewId = location?.state?.interviewId
+  const resultData = result?.data ?? result ?? {}
 
-  const score = result?.totalScore ?? result?.score ?? result?.data?.score ?? result?.overallScore ?? "N/A"
+  const score =
+    resultData?.totalScore ??
+    resultData?.score ??
+    result?.totalScore ??
+    result?.score ??
+    result?.overallScore ??
+    resultData?.overallScore ??
+    "N/A"
+  const correctAnswers =
+    resultData?.correctAnswers ??
+    resultData?.rightAnswers ??
+    resultData?.correctCount ??
+    result?.evaluation?.correctAnswers ??
+    result?.evaluation?.rightAnswers ??
+    result?.correctAnswers ??
+    result?.rightAnswers ??
+    result?.data?.correctAnswers ??
+    result?.data?.rightAnswers ??
+    null
+  const totalQuestions =
+    resultData?.totalQuestions ??
+    resultData?.total ??
+    resultData?.questionsCount ??
+    result?.evaluation?.totalQuestions ??
+    result?.totalQuestions ??
+    result?.questionsCount ??
+    result?.data?.totalQuestions ??
+    result?.data?.questionsCount ??
+    null
+  const computedScore =
+    correctAnswers !== null && totalQuestions !== null
+      ? `${correctAnswers}/${totalQuestions}`
+      : score
   const feedback =
     result?.evaluation?.overAllFeedback ??
     result?.overAllFeedback ??
@@ -42,7 +75,7 @@ const Report = () => {
 
         <div className="mt-6 rounded-lg border border-gray-700 bg-gray-900 p-4">
           <p className="text-sm text-gray-400">Score</p>
-          <p className="mt-1 text-3xl font-semibold text-green-400">{score}</p>
+          <p className="mt-1 text-3xl font-semibold text-green-400">{computedScore}</p>
         </div>
 
         <div className="mt-4 rounded-lg border border-gray-700 bg-gray-900 p-4">
