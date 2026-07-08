@@ -61,7 +61,7 @@ If you're a contributor or recruiter reading this: treat the **Features** and **
 
 | Feature | Status |
 |---|---|
-| 🤖 AI-generated interview questions (via Ollama) | ✅ Backend integration built |
+| 🤖 AI-generated interview questions (via Ollama) | ✅ Backend integration built. |
 | 💬 Candidate answer submission | ✅ Basic flow wired to `/api/interview` |
 | 🧠 AI feedback on answers | 🔄 In progress |
 | 📄 Resume-based question tailoring | 🗓️ Planned |
